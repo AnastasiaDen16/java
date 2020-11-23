@@ -1,0 +1,8 @@
+lemon-3.25
+cucumber-2.58
+orange-5
+tomato-3.6
+choclate-10
+cupcake-12.3
+cake-14.25
+pie-8.98
