@@ -15,9 +15,17 @@ import java.util.Scanner;
 
 public class Task {
     static Products product;
+    static Products [] prod;
+    static int countProd;
+    static String [] prodList;
+    static String [] card;
+    static int keyCard = 0;
+    static Cards cards;
+            
     public static void main(String[] args) {
+        prod = new Products[countProd];
         ChoiseMain();
-        /*Добавить в Products получение из файла
+        /*
         * нормальный вывод чека
         * подсчет суммы и скидки
         * в ChoiseCard() отправлять выбранную карту/скидку
@@ -41,28 +49,43 @@ public class Task {
                 break;
             case  2: ChoiseProducts();
                 break;
-            case 3: PrintCheck();
+            case 3: PrintCheck(prod);
                 break;
             default:{System.out.println("Выбран неверный номер"); ChoiseMain();}
         }
     }
     static void ChoiseCard(){
-        Cards cards = new Cards();
+        cards = new Cards();
         System.out.println("Выберите карту:");
         cards.GetCards();
+        System.out.println("0 - Нет карты");
         System.out.print("Введите номер:");
         Scanner scan = new Scanner(System.in);
-        int keyCard = scan.nextInt();
+        keyCard = scan.nextInt();
         ChoiseMain();
     }
     static void ChoiseProducts(){
+        product = new Products();
+        prodList=product.GetProducts();
+        for (String p : prodList){
+        System.out.println(p);
+        }
+        System.out.print("Введите номер:");
+        Scanner scan = new Scanner(System.in);
+        int keyProd = scan.nextInt();
+        System.out.print("Введите количество продукции:");
+        int count = scan.nextInt();
+        prod[countProd] = new Products(countProd,prodList[0],count,Double.parseDouble(prodList[1]),cards.GetSale(keyCard-1));
+        countProd++;
         ChoiseMain();
     }
 
-    static  void PrintCheck(){
-        product = new Products(1, "lemon", 5, 3.5);
-        product.printProduct();
+    static  void PrintCheck(Products [] prod){
+        for(Products p: prod){
+        p.printProduct(countProd);}
         ChoiseMain();
+                
+        
     }
 
 

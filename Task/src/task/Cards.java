@@ -29,7 +29,7 @@ public class Cards {
                 card = text.get(j).split(delimeter);
                 this.nameCard[j] = card[0];
                 this.sale[j] = Integer.parseInt(card[1]);
-                System.out.println((j+1) +" " + nameCard[j] + " sale = " + sale[j]);
+                System.out.println((j+1) +" " + card[0] + " sale = " + card[1]);
             }
             fr.close();
         }
